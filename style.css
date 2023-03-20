@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+/* miscellaneous */
+.hover:hover {
+  background-color: #f1f3f4;
+  color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+/* nav-bar */
+.nav-bar {
+  height: 64px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dadce0;
+  color: #5f6368;
+}
+
+.nav-bar i,
+.nav-bar img {
+  padding: 10px;
+}
+
+/* logo area */
+.logo-area {
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+}
+
+.list-view {
+  block-size: 40px;
+}
+.keep-logo {
+  height: 60px;
+  width: 56px;
+  cursor: pointer;
+}
+
+.keep-text {
+  cursor: pointer;
+}
+
+/* search-area */
+.search-area {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  width: 692px;
+}
+
+.search-area input {
+  border: none;
+  background-color: #f1f3f4;
+  height: 100%;
+  width: 95%;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-size: 16px;
+}
+
+.search-area button {
+  border: none;
+  height: 100%;
+  width: 46px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-inline: 5px;
+  color: #5f6368;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* settings-area */
+
+.settings-area {
+  display: flex;
+  align-items: center;
+}
+
+/* profile-actions-area */
+
+.profile-actions-area {
+  display: flex;
+}
