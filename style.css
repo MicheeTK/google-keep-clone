@@ -7,13 +7,7 @@
 body {
   font-family: "Roboto", sans-serif;
 }
-/* miscellaneous */
-.hover:hover {
-  background-color: #f1f3f4;
-  color: black;
-  border-radius: 50%;
-  cursor: pointer;
-}
+
 /* nav-bar */
 .nav-bar {
   height: 64px;
@@ -30,7 +24,58 @@ body {
   padding: 10px;
 }
 
-/* logo area */
+/* nav-bar miscellaneous */
+.hover:hover {
+  background-color: #f1f3f4;
+  color: black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 500;
+  color: #f1f3f4;
+  background-color: #202124;
+  opacity: 0.85;
+  white-space: nowrap;
+  padding: 5px 8px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  top: 100%;
+  left: 0;
+  visibility: hidden;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.keep-tooltip {
+  position: relative;
+}
+
+.keep-tooltip-text {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 400;
+  border: 0.5px solid black;
+  padding: 5px 8px;
+  top: 100%;
+  left: 10px;
+  visibility: hidden;
+}
+
+.keep-tooltip:hover .keep-tooltip-text {
+  visibility: visible;
+}
+
+/*nav-bar logo area */
 .logo-area {
   display: flex;
   align-items: center;
@@ -50,7 +95,7 @@ body {
   cursor: pointer;
 }
 
-/* search-area */
+/*nav-bar search-area */
 .search-area {
   display: flex;
   align-items: center;
@@ -82,15 +127,16 @@ input:focus {
   outline: none;
 }
 
-/* settings-area */
+/*nav-bar settings-area */
 
 .settings-area {
   display: flex;
   align-items: center;
 }
 
-/* profile-actions-area */
+/*nav-bar profile-actions-area */
 
 .profile-actions-area {
   display: flex;
+  margin-right: 15px;
 }

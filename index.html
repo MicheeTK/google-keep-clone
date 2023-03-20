@@ -12,22 +12,56 @@
   <body>
     <nav class="nav-bar">
       <div class="logo-area">
-        <i class="material-icons hover">menu</i>
-        <img class="keep-logo" src="./assets/keep_2020q4_48dp.png" alt="Keep-logo" />
-        <span class="keep-text">Keep</span>
+        <div class="tooltip">
+          <i class="material-icons hover">menu</i>
+          <span class="tooltip-text">Main menu</span>
+        </div>
+
+        <div class="keep-tooltip">
+          <img class="keep-logo" src="./assets/keep_2020q4_48dp.png" alt="Keep-logo" />
+          <span class="keep-tooltip-text">Keep</span>
+        </div>
+
+        <div class="keep-tooltip">
+          <span class="keep-text">Keep</span>
+          <span class="keep-tooltip-text">Keep</span>
+        </div>
       </div>
+
       <form class="search-area">
-        <button><i class="material-icons hover">search</i></button>
+        <div class="tooltip">
+          <button><i class="material-icons hover">search</i></button>
+          <span class="tooltip-text">Search</span>
+        </div>
         <input class="search-input" type="text" placeholder="Search" />
       </form>
+
       <div class="settings-area">
-        <i class="material-icons hover">refresh</i>
-        <img class="list-view hover" src="./assets/list_view.svg" alt="" />
-        <i class="material-icons hover">settings</i>
+        <div class="tooltip">
+          <i class="material-icons hover">refresh</i>
+          <span class="tooltip-text">Refresh</span>
+        </div>
+
+        <div class="tooltip">
+          <img class="list-view hover" src="./assets/list_view.svg" alt="" />
+          <span class="tooltip-text">List view</span>
+        </div>
+
+        <div class="tooltip">
+          <i class="material-icons hover">settings</i>
+          <span class="tooltip-text">Settings</span>
+        </div>
       </div>
       <div class="profile-actions-area">
-        <i class="material-icons hover">apps</i>
-        <i class="material-icons hover">account_circle</i>
+        <div class="tooltip">
+          <i class="material-icons hover">apps</i>
+          <span class="tooltip-text">apps</span>
+        </div>
+
+        <div class="tooltip">
+          <i class="material-icons hover">account_circle</i>
+          <span class="tooltip-text">Account</span>
+        </div>
       </div>
     </nav>
   </body>
