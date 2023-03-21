@@ -8,7 +8,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-/* nav-bar */
+/* NAV-BAR */
 .nav-bar {
   height: 64px;
   padding: 8px;
@@ -24,7 +24,7 @@ body {
   padding: 10px;
 }
 
-/* nav-bar miscellaneous */
+/* NAV-BAR MISCELLANEOUS */
 .hover:hover {
   background-color: #f1f3f4;
   color: black;
@@ -50,6 +50,7 @@ body {
   top: 100%;
   left: 0;
   visibility: hidden;
+  z-index: 1;
 }
 
 .tooltip:hover .tooltip-text {
@@ -75,7 +76,7 @@ body {
   visibility: visible;
 }
 
-/*nav-bar logo area */
+/*NAV-BAR LOGO-AREA */
 .logo-area {
   display: flex;
   align-items: center;
@@ -95,7 +96,7 @@ body {
   cursor: pointer;
 }
 
-/*nav-bar search-area */
+/*NAV-BAR SEARCH-AREA */
 .search-area {
   display: flex;
   align-items: center;
@@ -127,16 +128,51 @@ input:focus {
   outline: none;
 }
 
-/*nav-bar settings-area */
+/*NAV-BAR SETTINGS-AREA */
 
 .settings-area {
   display: flex;
   align-items: center;
 }
 
-/*nav-bar profile-actions-area */
+/*NAV-BAR PROFILE-ACTIONS-AREA*/
 
 .profile-actions-area {
   display: flex;
   margin-right: 15px;
+}
+
+/********************************SIDE-BAR********************************/
+
+.side-bar {
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding-left: 18px;
+  padding-top: 10px;
+  row-gap: 22px;
+  color: #5f6368;
+}
+
+.side-bar-items {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.side-bar-items--text {
+  color: black;
+  font-size: 13px;
+  width: 250px;
+}
+
+.active {
+  background-color: #fef0c3;
+  border-radius: 50%;
+  color: black;
+}
+
+.active:hover {
+  background-color: #fef0c3;
 }
