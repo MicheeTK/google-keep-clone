@@ -145,8 +145,6 @@ input:focus {
 /********************************SIDE-BAR********************************/
 
 .side-bar {
-  position: fixed;
-  left: 0;
   display: flex;
   flex-direction: column;
   padding-left: 18px;
@@ -177,4 +175,44 @@ input:focus {
 
 .active:hover {
   background-color: #fef0c3;
+}
+
+/********************************MAIN-CONTAINER********************************/
+
+.main-aside-wrapper {
+  display: flex;
+}
+
+.main-container {
+  /* background-color: red; */
+  width: 100%;
+}
+
+.form-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  max-width: 598px;
+  height: 46px;
+  margin: 32px auto;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.2), 0 3px 5px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e0e1e0;
+  border-radius: 7px;
+}
+
+.form-actions {
+  display: flex;
+  column-gap: 33px;
+  color: #5f6368;
+}
+
+.form-actions:last-child {
+  margin-right: 25px;
+}
+
+.input-note {
+  border: none;
+  font-size: 16px;
+  margin-left: 10px;
 }

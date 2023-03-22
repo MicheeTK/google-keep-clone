@@ -66,31 +66,49 @@
       </div>
     </nav>
 
-    <aside class="side-bar">
-      <div class="side-bar-items">
-        <span class="material-symbols-outlined hover active"> lightbulb </span>
-        <span class="side-bar-items--text">Notes</span>
-      </div>
-      <div class="side-bar-items">
-        <span class="material-symbols-outlined hover"> notifications </span>
-        <span class="side-bar-items--text">Reminders</span>
-      </div>
-      <div class="side-bar-items">
-        <span class="material-symbols-outlined hover"> edit </span>
-        <span class="side-bar-items--text">Edit Labels</span>
-      </div>
-      <div class="side-bar-items">
-        <span class="material-symbols-outlined hover"> archive </span>
-        <span class="side-bar-items--text">Archive</span>
-      </div>
-      <div class="side-bar-items">
-        <span class="material-symbols-outlined hover"> delete </span>
-        <span class="side-bar-items--text">Trash</span>
-      </div>
-    </aside>
+    <div class="main-aside-wrapper">
+      <aside class="side-bar">
+        <div class="side-bar-items">
+          <span class="material-symbols-outlined hover active"> lightbulb </span>
+          <span class="side-bar-items--text">Notes</span>
+        </div>
+        <div class="side-bar-items">
+          <span class="material-symbols-outlined hover"> notifications </span>
+          <span class="side-bar-items--text">Reminders</span>
+        </div>
+        <div class="side-bar-items">
+          <span class="material-symbols-outlined hover"> edit </span>
+          <span class="side-bar-items--text">Edit Labels</span>
+        </div>
+        <div class="side-bar-items">
+          <span class="material-symbols-outlined hover"> archive </span>
+          <span class="side-bar-items--text">Archive</span>
+        </div>
+        <div class="side-bar-items">
+          <span class="material-symbols-outlined hover"> delete </span>
+          <span class="side-bar-items--text">Trash</span>
+        </div>
+      </aside>
 
-    <main>
-      <form class="main-container"></form>
-    </main>
+      <main class="main-container">
+        <form class="form-container">
+          <input class="input-note" type="text" placeholder="Take a note..." />
+          <div class="form-actions">
+            <div class="tooltip">
+              <i class="material-icons hover">check_box</i>
+              <span class="tooltip-text">New list</span>
+            </div>
+            <div class="tooltip">
+              <i class="material-icons hover">brush</i>
+              <span class="tooltip-text">New note with drawing</span>
+            </div>
+            <div class="tooltip">
+              <i class="material-icons hover">image</i>
+              <span class="tooltip-text">New note with image</span>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
   </body>
 </html>
