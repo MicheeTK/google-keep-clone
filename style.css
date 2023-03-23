@@ -214,5 +214,35 @@ input:focus {
 .input-note {
   border: none;
   font-size: 16px;
-  margin-left: 10px;
+  margin: 10px 0px 10px 10px;
+  height: 24px;
+  width: 100%;
+}
+
+/****TEMPORARY CODE*******************ACTIVE-FORM********************************/
+.active-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 15px;
+  padding-bottom: 7px;
+  height: fit-content;
+  background-color: blueviolet;
+}
+
+.note-title {
+  border: none;
+  font-size: 16px;
+  margin: 10px 0px 10px 10px;
+  height: 24px;
+  width: 100%;
+}
+
+.note-title,
+.active-form .input-note {
+  margin-left: 20px;
+}
+
+.active-form .input-note {
+  height: 100%;
 }
