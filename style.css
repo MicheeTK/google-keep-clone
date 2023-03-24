@@ -256,7 +256,7 @@ input:focus {
 }
 
 .active-form .form-actions .material-icons {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .note-title {
@@ -274,4 +274,48 @@ input:focus {
 
 .active-form .input-note {
   height: 100%;
+}
+
+/********************************NOTES********************************/
+
+.notes {
+  display: flex;
+  justify-content: center;
+}
+
+.create-note {
+  background-color: white;
+  width: 240px;
+  height: 104px;
+  border: 1px solid #e0e1e0;
+  border-radius: 7px;
+  margin: 10px;
+  position: relative;
+}
+
+.create-note--title {
+  width: 100%;
+  margin: 10px 0 0 17px;
+}
+.create-note--text {
+  width: 100%;
+  margin: 10px 0 0 17px;
+}
+
+.create-note--footer {
+  display: flex;
+  margin-top: 5px;
+  column-gap: 18px;
+  justify-content: center;
+}
+
+.create-note--footer .material-icons {
+  color: #5f6368;
+  font-size: 18px;
+}
+
+.check-circle {
+  position: absolute;
+  left: -12px;
+  top: -11px;
 }
