@@ -184,7 +184,6 @@ input:focus {
 }
 
 .main-container {
-  /* background-color: red; */
   width: 100%;
 }
 
@@ -227,7 +226,37 @@ input:focus {
   padding-right: 15px;
   padding-bottom: 7px;
   height: fit-content;
-  background-color: blueviolet;
+}
+
+.active-form .form-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 40px;
+}
+
+.active-form .form-actions .active-form--close-btn {
+  margin-right: 35px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.active-form .form-actions .active-form--close-btn:hover {
+  background-color: #eef0f4;
+  padding: 8px 24px;
+}
+
+.active-form .form-actions .icons {
+  display: flex;
+  column-gap: 24px;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.active-form .form-actions .material-icons {
+  font-size: 16px;
 }
 
 .note-title {
