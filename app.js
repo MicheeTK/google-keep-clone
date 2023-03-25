@@ -11,8 +11,8 @@ class App {
     this.notes = [];
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
-    this.$noteTitle = document.querySelector(".note-title");
-    this.$inputNote = document.querySelector(".input-note");
+    this.$noteTitle = document.querySelector("#note-title");
+    this.$inputNote = document.querySelector("#input-note");
 
     this.addEventListeners();
   }
@@ -31,7 +31,7 @@ class App {
       this.$inActiveForm.style.display = "none";
       this.$activeForm.style.display = "flex";
       this.$inputNote.focus();
-    } else if (!isinActiveFormClicked) {
+    } else if (!isinActiveFormClicked && !isActiveFormClicked) {
       this.$inActiveForm.style.display = "flex";
       this.$activeForm.style.display = "none";
     }

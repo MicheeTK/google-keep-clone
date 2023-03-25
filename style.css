@@ -218,7 +218,7 @@ input:focus {
   width: 100%;
 }
 
-/****TEMPORARY CODE*******************ACTIVE-FORM********************************/
+/********************************ACTIVE-FORM********************************/
 .active-form {
   display: none;
   flex-direction: column;
@@ -230,22 +230,21 @@ input:focus {
 
 .active-form .form-actions {
   display: flex;
-  justify-content: space-between;
   width: 100%;
   margin-left: 40px;
 }
 
-.active-form .form-actions .active-form--close-btn {
-  margin-right: 35px;
-  font-weight: 600;
+.active-form--close-btn {
+  font-weight: 500;
+  font-size: 14px;
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px 24px;
 }
 
-.active-form .form-actions .active-form--close-btn:hover {
-  background-color: #eef0f4;
-  padding: 8px 24px;
+.active-form--close-btn:hover {
+  background-color: #eef0f496;
 }
 
 .active-form .form-actions .icons {
@@ -318,28 +317,4 @@ input:focus {
   position: absolute;
   left: -12px;
   top: -11px;
-}
-
-/********************************MODAL********************************/
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-
-.modal-content {
-  width: 589px;
-  position: relative;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.open-modal {
-  visibility: visible;
 }
