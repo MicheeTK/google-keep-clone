@@ -220,7 +220,7 @@ input:focus {
 
 /****TEMPORARY CODE*******************ACTIVE-FORM********************************/
 .active-form {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding-right: 15px;
@@ -340,6 +340,6 @@ input:focus {
   transform: translate(-50%, -50%);
 }
 
-.open {
+.open-modal {
   visibility: visible;
 }
