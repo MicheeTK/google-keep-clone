@@ -1,3 +1,5 @@
+import UniqueID from "./test.js";
+
 class Note {
   constructor(id, title, text) {
     this.id = id;
@@ -26,6 +28,8 @@ class App {
   handleFormClick(event) {
     const isActiveFormClicked = this.$activeForm.contains(event.target);
     const isinActiveFormClicked = this.$inActiveForm.contains(event.target);
+    const title = this.$noteTitle.value;
+    const text = this.$inputNote.value;
 
     if (isinActiveFormClicked) {
       this.$inActiveForm.style.display = "none";
@@ -37,7 +41,7 @@ class App {
     }
   }
 
-  addNote(id, { title, text }) {
+  addNote({ title, text }) {
     const newNote = new Note(id, title, text);
     this.notes = [...this.notes, newNote];
   }
@@ -67,4 +71,18 @@ class App {
   }
 }
 
-const app = new App();
+// const app = new App();
+
+//UNIQUE ID GENERATORCODE
+const CryptoJS = require("crypto-js");
+
+function sha256(seed) {
+  const hash = CryptoJS.SHA256(seed);
+  return hash.toString(CryptoJS.enc.Hex);
+}
+
+const hash = sha256("1");
+console.log(hash);
+// Example usage:
+
+// console.log(UniqueID);
