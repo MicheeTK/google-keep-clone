@@ -35,14 +35,21 @@ class App {
       this.$activeForm.style.display = "flex";
       this.$inputNote.focus();
     } else if (!isinActiveFormClicked && !isActiveFormClicked) {
+      this.addNote({ title, text });
       this.$inActiveForm.style.display = "flex";
       this.$activeForm.style.display = "none";
+      this.$inputNote.value = "";
+      this.$noteTitle = "";
     }
   }
 
   addNote({ title, text }) {
-    const newNote = new Note(uniqueID, title, text);
-    this.notes = [...this.notes, newNote];
+    if (text != "") {
+      //only creates notes when the text field is not empty
+      const newNote = new Note(uniqueID, title, text);
+      this.notes = [...this.notes, newNote];
+      this.displayNotes();
+    }
   }
 
   editNote(id, { title, text }) {
