@@ -1,4 +1,4 @@
-import UniqueID from "./test.js";
+import { uniqueID } from "./customUUID.js";
 
 class Note {
   constructor(id, title, text) {
@@ -15,7 +15,6 @@ class App {
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
     this.$inputNote = document.querySelector("#input-note");
-
     this.addEventListeners();
   }
 
@@ -42,7 +41,7 @@ class App {
   }
 
   addNote({ title, text }) {
-    const newNote = new Note(id, title, text);
+    const newNote = new Note(uniqueID, title, text);
     this.notes = [...this.notes, newNote];
   }
 
@@ -71,18 +70,4 @@ class App {
   }
 }
 
-// const app = new App();
-
-//UNIQUE ID GENERATORCODE
-const CryptoJS = require("crypto-js");
-
-function sha256(seed) {
-  const hash = CryptoJS.SHA256(seed);
-  return hash.toString(CryptoJS.enc.Hex);
-}
-
-const hash = sha256("1");
-console.log(hash);
-// Example usage:
-
-// console.log(UniqueID);
+const app = new App();
