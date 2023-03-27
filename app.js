@@ -70,7 +70,7 @@ class App {
   }
 
   displayNotes() {
-    this.$notes.innerHTML = this.notes.map((note) => createNoteHTML(note));
+    this.$notes.innerHTML = this.notes.map((note) => createNoteHTML(note)).join("");
   }
 }
 
