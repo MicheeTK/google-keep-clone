@@ -1,4 +1,5 @@
-import { uniqueID } from "./customUUID.js";
+import uniqueID from "./components/customUUID.js";
+// import { createNoteHTML } from "./components/noteHTML";
 
 class Note {
   constructor(id, title, text) {
@@ -15,6 +16,8 @@ class App {
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
     this.$inputNote = document.querySelector("#input-note");
+    this.$notes = document.querySelector(".notes");
+
     this.addEventListeners();
   }
 
@@ -67,12 +70,40 @@ class App {
   }
 
   displayNotes() {
-    this.notes.map((note) =>
-      console.log(`
-  ID: ${note.id}
-  Title: ${note.title}
-  Text: ${note.text}
-  `)
+    this.$notes.innerHTML = this.notes.map(
+      (note) => `<div class="create-note">
+            <span class="material-icons check-circle"> check_circle </span>
+            <div class="create-note--title">${note.title}</div>
+            <div class="create-note--text">${note.text}</div>
+
+            <div class="create-note--footer">
+              <div class="tooltip">
+                <i class="material-icons hover">add_alert</i>
+                <span class="tooltip-text">Remind me</span>
+              </div>
+              <div class="tooltip">
+                <i class="material-icons hover">person_add</i>
+                <span class="tooltip-text">Collaborator</span>
+              </div>
+              <div class="tooltip">
+                <i class="material-icons hover">palette</i>
+                <span class="tooltip-text">Background options</span>
+              </div>
+
+              <div class="tooltip">
+                <i class="material-icons hover">image</i>
+                <span class="tooltip-text">Add Image</span>
+              </div>
+              <div class="tooltip">
+                <i class="material-icons hover">archive</i>
+                <span class="tooltip-text">Archive</span>
+              </div>
+              <div class="tooltip">
+                <i class="material-icons hover">more_vert</i>
+                <span class="tooltip-text">More</span>
+              </div>
+            </div>
+          </div>`
     );
   }
 }

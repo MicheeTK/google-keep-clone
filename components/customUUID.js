@@ -11,4 +11,4 @@ function generateUUID() {
   return uuid;
 }
 
-export const uniqueID = generateUUID();
+export default generateUUID();
