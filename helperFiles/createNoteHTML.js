@@ -1,6 +1,6 @@
-function noteHTML() {
+export function createNoteHTML(note) {
   return `
-    <div class="create-note">
+            <div class="create-note">
             <span class="material-icons check-circle"> check_circle </span>
             <div class="create-note--title">${note.title}</div>
             <div class="create-note--text">${note.text}</div>
@@ -33,8 +33,5 @@ function noteHTML() {
               </div>
             </div>
           </div>
-
     `;
 }
-
-export const createNoteHTML = noteHTML();

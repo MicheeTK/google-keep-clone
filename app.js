@@ -1,5 +1,5 @@
-import uniqueID from "./components/customUUID.js";
-// import { createNoteHTML } from "./components/noteHTML";
+import uniqueID from "./helperFiles/uniqueID.js";
+import { createNoteHTML } from "./helperFiles/createNoteHTML.js";
 
 class Note {
   constructor(id, title, text) {
@@ -49,7 +49,7 @@ class App {
   addNote({ title, text }) {
     if (text != "") {
       //only creates notes when the text field is not empty
-      const newNote = new Note(uniqueID, title, text);
+      const newNote = new Note(uniqueID(), title, text);
       this.notes = [...this.notes, newNote];
       this.displayNotes();
     }
@@ -70,41 +70,7 @@ class App {
   }
 
   displayNotes() {
-    this.$notes.innerHTML = this.notes.map(
-      (note) => `<div class="create-note">
-            <span class="material-icons check-circle"> check_circle </span>
-            <div class="create-note--title">${note.title}</div>
-            <div class="create-note--text">${note.text}</div>
-
-            <div class="create-note--footer">
-              <div class="tooltip">
-                <i class="material-icons hover">add_alert</i>
-                <span class="tooltip-text">Remind me</span>
-              </div>
-              <div class="tooltip">
-                <i class="material-icons hover">person_add</i>
-                <span class="tooltip-text">Collaborator</span>
-              </div>
-              <div class="tooltip">
-                <i class="material-icons hover">palette</i>
-                <span class="tooltip-text">Background options</span>
-              </div>
-
-              <div class="tooltip">
-                <i class="material-icons hover">image</i>
-                <span class="tooltip-text">Add Image</span>
-              </div>
-              <div class="tooltip">
-                <i class="material-icons hover">archive</i>
-                <span class="tooltip-text">Archive</span>
-              </div>
-              <div class="tooltip">
-                <i class="material-icons hover">more_vert</i>
-                <span class="tooltip-text">More</span>
-              </div>
-            </div>
-          </div>`
-    );
+    this.$notes.innerHTML = this.notes.map((note) => createNoteHTML(note));
   }
 }
 
