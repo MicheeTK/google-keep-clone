@@ -279,7 +279,9 @@ input:focus {
 
 .notes {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-inline: 50px;
 }
 
 .create-note {
