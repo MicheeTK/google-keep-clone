@@ -17,32 +17,45 @@ class App {
     this.$noteTitle = document.querySelector("#note-title");
     this.$inputNote = document.querySelector("#input-note");
     this.$notes = document.querySelector(".notes");
+    this.$formAction = document.querySelector("#form-action");
 
     this.addEventListeners();
+    this.displayNotes();
   }
 
   addEventListeners() {
     document.body.addEventListener("click", (event) => {
       this.handleFormClick(event);
     });
-  }
 
-  handleFormClick(event) {
-    const isActiveFormClicked = this.$activeForm.contains(event.target);
-    const isinActiveFormClicked = this.$inActiveForm.contains(event.target);
-    const title = this.$noteTitle.value;
-    const text = this.$inputNote.value;
-
-    if (isinActiveFormClicked) {
-      this.$inActiveForm.style.display = "none";
-      this.$activeForm.style.display = "flex";
-      this.$inputNote.focus();
-    } else if (!isinActiveFormClicked && !isActiveFormClicked) {
+    this.$formAction.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = this.$noteTitle.value;
+      const text = this.$inputNote.value;
       this.addNote({ title, text });
       this.$inActiveForm.style.display = "flex";
       this.$activeForm.style.display = "none";
       this.$inputNote.value = "";
-      this.$noteTitle = "";
+      this.$noteTitle.value = "";
+    });
+  }
+
+  handleFormClick(event) {
+    const activeFormClicked = this.$activeForm.contains(event.target);
+    const inActiveFormClicked = this.$inActiveForm.contains(event.target);
+    const title = this.$noteTitle.value;
+    const text = this.$inputNote.value;
+
+    if (inActiveFormClicked) {
+      this.$inActiveForm.style.display = "none";
+      this.$activeForm.style.display = "flex";
+      this.$inputNote.focus();
+    } else if (!inActiveFormClicked && !activeFormClicked) {
+      this.addNote({ title, text });
+      this.$inActiveForm.style.display = "flex";
+      this.$activeForm.style.display = "none";
+      this.$inputNote.value = "";
+      this.$noteTitle.value = "";
     }
   }
 
