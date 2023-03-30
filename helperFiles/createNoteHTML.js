@@ -1,6 +1,6 @@
 export function createNoteHTML(note) {
   return `
-            <div class="create-note" id=${note.id}>
+            <div class="create-note" id="${note.id}">
             <span class="material-icons check-circle"> check_circle </span>
             <div class="create-note--title">${note.title}</div>
             <div class="create-note--text">${note.text}</div>

@@ -11,7 +11,7 @@ class Note {
 
 class App {
   constructor() {
-    this.notes = [];
+    this.notes = [new Note("2568", "generic title", "generic text")];
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
@@ -38,6 +38,9 @@ class App {
       this.$inputNote.value = "";
       this.$noteTitle.value = "";
     });
+
+    this.$notes.addEventListener("mouseover", (event) => this.handleMouseOverNote(event));
+    this.$notes.addEventListener("mouseout", (event) => this.handleMouseOutOfNote(event));
   }
 
   handleFormClick(event) {
@@ -61,7 +64,7 @@ class App {
 
   addNote({ title, text }) {
     if (text != "") {
-      //only creates notes when the text field is not empty
+      //only creates notes when there is text in the text field
       const newNote = new Note(uniqueID(), title, text);
       this.notes = [...this.notes, newNote];
       this.displayNotes();
@@ -84,6 +87,22 @@ class App {
 
   displayNotes() {
     this.$notes.innerHTML = this.notes.map((note) => createNoteHTML(note)).join("");
+  }
+
+  handleMouseOverNote(event) {
+    const $note = document.getElementById(`${event.target.id}`);
+    const $checkNote = $note.getElementsByClassName("check-circle");
+    const $noteFooter = $note.getElementsByClassName("create-note--footer");
+    $checkNote[0].style.visibility = "visible";
+    $noteFooter[0].style.visibility = "visible";
+  }
+
+  handleMouseOutOfNote(event) {
+    const $note = document.getElementById(`${event.target.id}`);
+    const $checkNote = $note.getElementsByClassName("check-circle");
+    const $noteFooter = $note.getElementsByClassName("create-note--footer");
+    $checkNote[0].style.visibility = "hidden";
+    $noteFooter[0].style.visibility = "hidden";
   }
 }
 
