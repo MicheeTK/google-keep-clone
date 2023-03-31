@@ -269,12 +269,8 @@ input:focus {
   width: 100%;
 }
 
-.note-title,
-.active-form .input-note {
+.input-note {
   margin-left: 20px;
-}
-
-.active-form .input-note {
   height: 100%;
 }
 

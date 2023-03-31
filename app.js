@@ -19,6 +19,8 @@ class App {
     this.$notes = document.querySelector(".notes");
     this.$formContainerActions = document.querySelector("#form-container-actions");
     this.$modalFormActions = document.querySelector("#modal-form-actions");
+    this.$modalActiveForm = document.querySelector(".modal-active-form");
+    this.$modal = document.querySelector(".modal");
 
     this.addEventListeners();
     this.displayNotes();
@@ -27,6 +29,7 @@ class App {
   addEventListeners() {
     document.body.addEventListener("click", (event) => {
       this.handleFormClick(event);
+      this.openModal(event);
     });
 
     this.$formContainerActions.addEventListener("submit", (event) => {
@@ -105,6 +108,14 @@ class App {
     const $noteFooter = $note.getElementsByClassName("create-note--footer");
     $checkNote[0].style.visibility = "hidden";
     $noteFooter[0].style.visibility = "hidden";
+  }
+
+  openModal(event) {
+    if (event.target.closest(".create-note")) {
+      this.$notes.style.visibility = "hidden";
+      this.$modal.classList.add("open-modal");
+      this.$modalActiveForm.style.display = "flex";
+    }
   }
 }
 
