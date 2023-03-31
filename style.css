@@ -218,8 +218,9 @@ input:focus {
   width: 100%;
 }
 
-/********************************ACTIVE-FORM********************************/
-.active-form {
+/********************************ACTIVE & MODALFORMS********************************/
+.active-form,
+.modal-active-form {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -228,13 +229,14 @@ input:focus {
   height: fit-content;
 }
 
-.active-form .form-actions {
+.form-actions {
   display: flex;
   width: 100%;
   margin-left: 40px;
 }
 
-.active-form--close-btn {
+.active-form--close-btn,
+.modal-active-form--close-btn {
   font-weight: 500;
   font-size: 14px;
   background: none;
@@ -243,18 +245,19 @@ input:focus {
   padding: 8px 24px;
 }
 
-.active-form--close-btn:hover {
+.active-form--close-btn:hover,
+.modal-active-form--close-btn:hover {
   background-color: #eef0f496;
 }
 
-.active-form .form-actions .icons {
+.form-actions .icons {
   display: flex;
   column-gap: 24px;
   width: 100%;
   margin-top: 15px;
 }
 
-.active-form .form-actions .material-icons {
+.form-actions .material-icons {
   font-size: 18px;
 }
 
@@ -273,30 +276,6 @@ input:focus {
 
 .active-form .input-note {
   height: 100%;
-}
-
-/********************************MODAL********************************/
-
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  visibility: hidden;
-}
-
-.modal-content {
-  width: 589px;
-  position: relative;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.open-modal {
-  visibility: visible;
 }
 
 /********************************NOTES********************************/
@@ -350,4 +329,28 @@ input:focus {
   left: -12px;
   top: -11px;
   visibility: hidden;
+}
+
+/********************************MODAL********************************/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+
+.modal-content {
+  width: 589px;
+  position: relative;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.open-modal {
+  visibility: visible;
 }

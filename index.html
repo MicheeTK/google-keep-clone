@@ -109,7 +109,7 @@
           </div>
         </form>
 
-        <form class="form-container active-form form-action" id="form-action">
+        <form class="form-container active-form" id="form-container-actions">
           <input id="note-title" class="note-title" type="text" placeholder="Title" />
           <input id="input-note" class="input-note" type="text" placeholder="Take a note..." />
           <div class="form-actions">
@@ -154,9 +154,9 @@
           </div>
         </form>
 
-        <div class="modal">
+        <div class="modal +open-modal">
           <div class="modal-content">
-            <form class="form-container active-form form-action" id="modal-form-action">
+            <form class="form-container modal-active-form" id="modal-form-actions">
               <input class="note-title" type="text" placeholder="Title" />
               <input class="input-note" type="text" placeholder="Take a note..." />
               <div class="form-actions">
@@ -197,7 +197,7 @@
                   </div>
                 </div>
 
-                <button class="active-form--close-btn">Close</button>
+                <button class="modal-active-form--close-btn">Close</button>
               </div>
             </form>
           </div>

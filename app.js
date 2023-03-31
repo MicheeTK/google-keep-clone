@@ -11,13 +11,14 @@ class Note {
 
 class App {
   constructor() {
-    this.notes = [new Note("2568", "generic title", "generic text")];
+    this.notes = []; //[new Note("2568", "generic title", "generic text")];
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
     this.$inputNote = document.querySelector("#input-note");
     this.$notes = document.querySelector(".notes");
-    this.$formAction = document.querySelector("#form-action");
+    this.$formContainerActions = document.querySelector("#form-container-actions");
+    this.$modalFormActions = document.querySelector("#modal-form-actions");
 
     this.addEventListeners();
     this.displayNotes();
@@ -28,7 +29,7 @@ class App {
       this.handleFormClick(event);
     });
 
-    this.$formAction.addEventListener("submit", (event) => {
+    this.$formContainerActions.addEventListener("submit", (event) => {
       event.preventDefault();
       const title = this.$noteTitle.value;
       const text = this.$inputNote.value;
@@ -39,6 +40,7 @@ class App {
       this.$noteTitle.value = "";
     });
 
+    this.$modalFormActions.addEventListener("submit", (event) => event.preventDefault());
     this.$notes.addEventListener("mouseover", (event) => this.handleMouseOverNote(event));
     this.$notes.addEventListener("mouseout", (event) => this.handleMouseOutOfNote(event));
   }
