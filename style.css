@@ -259,6 +259,7 @@ input:focus {
 
 .form-actions .material-icons {
   font-size: 18px;
+  padding: 9px;
 }
 
 .note-title {
@@ -291,7 +292,7 @@ input:focus {
   border-radius: 7px;
   margin: 10px;
   position: relative;
-  cursor: pointer;
+  cursor: cursor;
 }
 
 .create-note:hover {
@@ -310,7 +311,7 @@ input:focus {
 .create-note--footer {
   display: flex;
   margin-top: 5px;
-  column-gap: 18px;
+  column-gap: 15px;
   justify-content: center;
   visibility: hidden;
 }
@@ -318,6 +319,12 @@ input:focus {
 .create-note--footer .material-icons {
   color: #5f6368;
   font-size: 18px;
+  padding: 4px;
+}
+
+.create-note--footer .material-icons:hover {
+  /* background-color: #dadce0; */
+  background-color: red;
 }
 
 .check-circle {
@@ -345,6 +352,14 @@ input:focus {
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.modal .material-icons {
+  padding: 9px;
+}
+
+.modal .material-icons:hover {
+  background-color: #dadce0;
 }
 
 .open-modal {

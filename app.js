@@ -35,6 +35,8 @@ class App {
       this.handleFormClick(event);
       this.openModal(event);
       this.closeModal(event);
+      this.handleArchiving(event);
+      console.log("event clicked", event.target);
     });
 
     this.$formContainerActions.addEventListener("submit", (event) => {
@@ -94,6 +96,7 @@ class App {
 
   deleteNote(id) {
     this.notes = this.notes.filter((note) => note.id !== id);
+    this.displayNotes();
   }
 
   displayNotes() {
@@ -102,23 +105,30 @@ class App {
 
   handleMouseOverNote(event) {
     const $note = document.getElementById(`${event.target.id}`);
-    const $checkNote = $note.getElementsByClassName("check-circle");
-    const $noteFooter = $note.getElementsByClassName("create-note--footer");
-    $checkNote[0].style.visibility = "visible";
-    $noteFooter[0].style.visibility = "visible";
+    if ($note) {
+      const $checkNote = $note.getElementsByClassName("check-circle");
+      const $noteFooter = $note.getElementsByClassName("create-note--footer");
+      $checkNote[0].style.visibility = "visible";
+      $noteFooter[0].style.visibility = "visible";
+      this.$notes.addEventListener("mouseout", this.handleMouseOutOfNote);
+    }
   }
 
   handleMouseOutOfNote(event) {
     const $note = document.getElementById(`${event.target.id}`);
-    const $checkNote = $note.getElementsByClassName("check-circle");
-    const $noteFooter = $note.getElementsByClassName("create-note--footer");
-    $checkNote[0].style.visibility = "hidden";
-    $noteFooter[0].style.visibility = "hidden";
+    if ($note) {
+      const $checkNote = $note.getElementsByClassName("check-circle");
+      const $noteFooter = $note.getElementsByClassName("create-note--footer");
+      $checkNote[0].style.visibility = "hidden";
+      $noteFooter[0].style.visibility = "hidden";
+      this.$notes.addEventListener("mouseover", this.handleMouseOverNote);
+    }
   }
 
   openModal(event) {
     const $selectedClosestNote = event.target.closest(".create-note");
-    if ($selectedClosestNote) {
+    const $archiveBtn = event.target.closest(".archive");
+    if ($selectedClosestNote && !$archiveBtn) {
       const arrSelectedNoteChildren = $selectedClosestNote.children;
       this.$modalNoteTitle.value = arrSelectedNoteChildren[1].innerHTML;
       this.$modalInputNote.value = arrSelectedNoteChildren[2].innerHTML;
@@ -126,6 +136,8 @@ class App {
       this.$notes.style.visibility = "hidden";
       this.$modal.classList.add("open-modal");
       this.$modalActiveForm.style.display = "flex";
+    } else {
+      return;
     }
   }
 
@@ -139,6 +151,19 @@ class App {
       this.$modal.classList.remove("open-modal");
       this.$modalActiveForm.style.display = "none";
       this.editNote(this.selectedNoteId, { title: this.$modalNoteTitle.value, text: this.$modalInputNote.value });
+    }
+  }
+
+  handleArchiving(event) {
+    const $selectedClosestNote = event.target.closest(".create-note");
+    const $archiveBtn = event.target.closest(".archive");
+    console.log("archive >>", $archiveBtn);
+    if ($selectedClosestNote && $archiveBtn) {
+      console.log("archive worked");
+      this.selectedNoteId = $selectedClosestNote.id;
+      this.deleteNote(this.selectedNoteId);
+    } else {
+      return;
     }
   }
 }

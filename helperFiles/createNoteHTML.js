@@ -23,7 +23,7 @@ export function createNoteHTML(note) {
                 <i class="material-icons hover">image</i>
                 <span class="tooltip-text">Add Image</span>
               </div>
-              <div class="tooltip">
+              <div class="tooltip archive">
                 <i class="material-icons hover">archive</i>
                 <span class="tooltip-text">Archive</span>
               </div>
