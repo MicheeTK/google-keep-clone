@@ -12,6 +12,7 @@ class Note {
 class App {
   constructor() {
     this.notes = [];
+    this.selectedNoteId = "";
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
@@ -88,6 +89,7 @@ class App {
       }
       return note;
     });
+    this.displayNotes();
   }
 
   deleteNote(id) {
@@ -120,10 +122,10 @@ class App {
       const arrSelectedNoteChildren = $selectedClosestNote.children;
       this.$modalNoteTitle.value = arrSelectedNoteChildren[1].innerHTML;
       this.$modalInputNote.value = arrSelectedNoteChildren[2].innerHTML;
+      this.selectedNoteId = $selectedClosestNote.id;
       this.$notes.style.visibility = "hidden";
       this.$modal.classList.add("open-modal");
       this.$modalActiveForm.style.display = "flex";
-      console.log(arrSelectedNoteChildren[2].innerHTML);
     }
   }
 
@@ -136,6 +138,7 @@ class App {
       this.$notes.style.visibility = "visible";
       this.$modal.classList.remove("open-modal");
       this.$modalActiveForm.style.display = "none";
+      this.editNote(this.selectedNoteId, { title: this.$modalNoteTitle.value, text: this.$modalInputNote.value });
     }
   }
 }
