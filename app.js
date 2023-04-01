@@ -18,9 +18,10 @@ class App {
     this.$inputNote = document.querySelector("#input-note");
     this.$notes = document.querySelector(".notes");
     this.$formContainerActions = document.querySelector("#form-container-actions");
-    this.$modalFormActions = document.querySelector("#modal-form-actions");
+    this.$modalForm = document.querySelector("#modal-form");
     this.$modalActiveForm = document.querySelector(".modal-active-form");
     this.$modal = document.querySelector(".modal");
+    this.$modalCloseBtn = document.querySelector(".modal-active-form--close-btn");
 
     this.addEventListeners();
     this.displayNotes();
@@ -30,6 +31,7 @@ class App {
     document.body.addEventListener("click", (event) => {
       this.handleFormClick(event);
       this.openModal(event);
+      this.closeModal(event);
     });
 
     this.$formContainerActions.addEventListener("submit", (event) => {
@@ -43,7 +45,7 @@ class App {
       this.$noteTitle.value = "";
     });
 
-    this.$modalFormActions.addEventListener("submit", (event) => event.preventDefault());
+    this.$modalForm.addEventListener("submit", (event) => event.preventDefault());
     this.$notes.addEventListener("mouseover", (event) => this.handleMouseOverNote(event));
     this.$notes.addEventListener("mouseout", (event) => this.handleMouseOutOfNote(event));
   }
@@ -115,6 +117,20 @@ class App {
       this.$notes.style.visibility = "hidden";
       this.$modal.classList.add("open-modal");
       this.$modalActiveForm.style.display = "flex";
+      console.log("add");
+    }
+  }
+
+  closeModal(event) {
+    const modalFormClicked = this.$modalForm.contains(event.target);
+    const checkIfOpenedModal = this.$modal.classList.contains("open-modal");
+    const modalClicked = this.$modal.contains(event.target);
+    const closeBtnClicked = this.$modalCloseBtn.contains(event.target);
+    if ((modalClicked && !modalFormClicked && checkIfOpenedModal) || closeBtnClicked) {
+      console.log("modalFormClicked");
+      this.$notes.style.visibility = "visible";
+      this.$modal.classList.remove("open-modal");
+      this.$modalActiveForm.style.display = "none";
     }
   }
 }
