@@ -11,7 +11,7 @@ class Note {
 
 class App {
   constructor() {
-    this.notes = []; //[new Note("2568", "generic title", "generic text")];
+    this.notes = [];
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
@@ -113,11 +113,11 @@ class App {
   }
 
   openModal(event) {
-    if (event.target.closest(".create-note")) {
+    const $selectedClosestNode = event.target.closest(".create-note");
+    if ($selectedClosestNode) {
       this.$notes.style.visibility = "hidden";
       this.$modal.classList.add("open-modal");
       this.$modalActiveForm.style.display = "flex";
-      console.log("add");
     }
   }
 
@@ -127,7 +127,6 @@ class App {
     const modalClicked = this.$modal.contains(event.target);
     const closeBtnClicked = this.$modalCloseBtn.contains(event.target);
     if ((modalClicked && !modalFormClicked && checkIfOpenedModal) || closeBtnClicked) {
-      console.log("modalFormClicked");
       this.$notes.style.visibility = "visible";
       this.$modal.classList.remove("open-modal");
       this.$modalActiveForm.style.display = "none";
