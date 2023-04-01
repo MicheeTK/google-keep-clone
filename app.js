@@ -22,6 +22,8 @@ class App {
     this.$modalActiveForm = document.querySelector(".modal-active-form");
     this.$modal = document.querySelector(".modal");
     this.$modalCloseBtn = document.querySelector(".modal-active-form--close-btn");
+    this.$modalNoteTitle = document.querySelector("#modal-note-title");
+    this.$modalInputNote = document.querySelector("#modal-input-note");
 
     this.addEventListeners();
     this.displayNotes();
@@ -113,11 +115,15 @@ class App {
   }
 
   openModal(event) {
-    const $selectedClosestNode = event.target.closest(".create-note");
-    if ($selectedClosestNode) {
+    const $selectedClosestNote = event.target.closest(".create-note");
+    if ($selectedClosestNote) {
+      const arrSelectedNoteChildren = $selectedClosestNote.children;
+      this.$modalNoteTitle.value = arrSelectedNoteChildren[1].innerHTML;
+      this.$modalInputNote.value = arrSelectedNoteChildren[2].innerHTML;
       this.$notes.style.visibility = "hidden";
       this.$modal.classList.add("open-modal");
       this.$modalActiveForm.style.display = "flex";
+      console.log(arrSelectedNoteChildren[2].innerHTML);
     }
   }
 
