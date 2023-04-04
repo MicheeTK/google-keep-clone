@@ -13,6 +13,7 @@ class App {
   constructor() {
     this.notes = [];
     this.selectedNoteId = "";
+    this.miniSideBar = true;
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
@@ -25,6 +26,12 @@ class App {
     this.$modalCloseBtn = document.querySelector(".modal-active-form--close-btn");
     this.$modalNoteTitle = document.querySelector("#modal-note-title");
     this.$modalInputNote = document.querySelector("#modal-input-note");
+    this.$sideBar = document.querySelector(".side-bar");
+    this.$mainAsideWrapper = document.querySelector(".main-aside-wrapper");
+    this.$sideBarItemsText = document.querySelector(".side-bar-items--text");
+    this.$sideBarItemsAllText = document.querySelectorAll(".side-bar-items--text");
+
+    this.$sideBarItemsMaterials = document.querySelector(".material-symbols-outlined");
 
     this.addEventListeners();
     this.displayNotes();
@@ -35,8 +42,7 @@ class App {
       this.handleFormClick(event);
       this.openModal(event);
       this.closeModal(event);
-      this.handleArchiving(event);
-      console.log("event clicked", event.target);
+      this.handleArchive(event);
     });
 
     this.$formContainerActions.addEventListener("submit", (event) => {
@@ -51,8 +57,15 @@ class App {
     });
 
     this.$modalForm.addEventListener("submit", (event) => event.preventDefault());
-    this.$notes.addEventListener("mouseover", (event) => this.handleMouseOverNote(event));
+    this.$notes.addEventListener("mouseenter", (event) => this.handleMouseOverNote(event));
     this.$notes.addEventListener("mouseout", (event) => this.handleMouseOutOfNote(event));
+
+    this.$sideBarItemsMaterials.addEventListener("mouseover", (event) => {
+      this.handleToggleSideBarMouseOver(event);
+    });
+    this.$sideBar.addEventListener("mouseleave", (event) => {
+      this.handleToggleSideBarMouseOut(event);
+    });
   }
 
   handleFormClick(event) {
@@ -105,12 +118,12 @@ class App {
 
   handleMouseOverNote(event) {
     const $note = document.getElementById(`${event.target.id}`);
+    console.log("hey", event.target);
     if ($note) {
       const $checkNote = $note.getElementsByClassName("check-circle");
       const $noteFooter = $note.getElementsByClassName("create-note--footer");
       $checkNote[0].style.visibility = "visible";
       $noteFooter[0].style.visibility = "visible";
-      this.$notes.addEventListener("mouseout", this.handleMouseOutOfNote);
     }
   }
 
@@ -121,7 +134,6 @@ class App {
       const $noteFooter = $note.getElementsByClassName("create-note--footer");
       $checkNote[0].style.visibility = "hidden";
       $noteFooter[0].style.visibility = "hidden";
-      this.$notes.addEventListener("mouseover", this.handleMouseOverNote);
     }
   }
 
@@ -154,16 +166,33 @@ class App {
     }
   }
 
-  handleArchiving(event) {
+  handleArchive(event) {
     const $selectedClosestNote = event.target.closest(".create-note");
     const $archiveBtn = event.target.closest(".archive");
-    console.log("archive >>", $archiveBtn);
     if ($selectedClosestNote && $archiveBtn) {
-      console.log("archive worked");
       this.selectedNoteId = $selectedClosestNote.id;
       this.deleteNote(this.selectedNoteId);
     } else {
       return;
+    }
+  }
+
+  handleToggleSideBarMouseOver(event) {
+    if (event.target.closest(".material-symbols-outlined")) {
+      this.$sideBar.style.width = "250px";
+      this.$sideBar.classList.add("side-bar-hover");
+      console.log("over", event.target);
+      this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "block"));
+    } else {
+      return;
+    }
+  }
+
+  handleToggleSideBarMouseOut(event) {
+    if (event.target.closest(".main-aside-wrapper") && event.target.closest(".side-bar")) {
+      this.$sideBar.style.width = "80px";
+      this.$sideBar.classList.remove("side-bar-hover");
+      this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "none"));
     }
   }
 }
