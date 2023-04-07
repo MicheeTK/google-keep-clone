@@ -26,11 +26,12 @@ class App {
     this.$modalCloseBtn = document.querySelector(".modal-active-form--close-btn");
     this.$modalNoteTitle = document.querySelector("#modal-note-title");
     this.$modalInputNote = document.querySelector("#modal-input-note");
-    this.$sideBar = document.querySelector(".side-bar");
     this.$mainAsideWrapper = document.querySelector(".main-aside-wrapper");
-    this.$sideBarItemsText = document.querySelector(".side-bar-items--text");
+    this.$sideBar = document.querySelector(".side-bar");
+    this.$sideBarItemsAll = document.querySelectorAll(".side-bar-items");
     this.$sideBarItemsAllText = document.querySelectorAll(".side-bar-items--text");
-    this.$sideBarItemsMaterials = document.querySelector(".material-symbols-outlined");
+    this.$sideBarItemsMaterialsAll = document.querySelectorAll(".material-symbols-outlined");
+    this.$sideBarActiveItem = document.querySelector(".active-item");
 
     this.addEventListeners();
     this.displayNotes();
@@ -58,9 +59,11 @@ class App {
 
     this.$modalForm.addEventListener("submit", (event) => event.preventDefault());
 
-    this.$sideBarItemsMaterials.addEventListener("mouseover", (event) => {
-      this.handleToggleSideBarMouseOver(event);
-    });
+    this.$sideBarItemsMaterialsAll.forEach((sideBarItemsMaterial) =>
+      sideBarItemsMaterial.addEventListener("mouseover", (event) => {
+        this.handleToggleSideBarMouseOver(event);
+      })
+    );
 
     this.$sideBar.addEventListener("mouseleave", (event) => {
       this.handleToggleSideBarMouseOut(event);
@@ -175,6 +178,9 @@ class App {
     if (event.target.closest(".material-symbols-outlined")) {
       this.$sideBar.style.width = "250px";
       this.$sideBar.classList.add("side-bar-hover");
+      this.$sideBarActiveItem.classList.add("side-bar-active-item");
+      this.$sideBarItemsMaterialsAll.forEach((sideBarItemsMaterial) => (sideBarItemsMaterial.style.padding = "0px"));
+      this.$sideBarItemsAll.forEach((sideBarItem) => (sideBarItem.style.alignSelf = "auto"));
       this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "block"));
     } else {
       return;
@@ -183,8 +189,11 @@ class App {
 
   handleToggleSideBarMouseOut(event) {
     if (event.target.closest(".main-aside-wrapper") && event.target.closest(".side-bar")) {
-      this.$sideBar.style.width = "80px";
+      this.$sideBar.style.width = "content";
       this.$sideBar.classList.remove("side-bar-hover");
+      this.$sideBarActiveItem.classList.remove("side-bar-active-item");
+      this.$sideBarItemsMaterialsAll.forEach((sideBarItemsMaterial) => (sideBarItemsMaterial.style.padding = "10px"));
+      this.$sideBarItemsAll.forEach((sideBarItem) => (sideBarItem.style.alignSelf = "flex-start"));
       this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "none"));
     }
   }
