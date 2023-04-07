@@ -11,9 +11,8 @@ class Note {
 
 class App {
   constructor() {
-    this.notes = [];
+    this.notes = JSON.parse(localStorage.getItem("notes")) || [];
     this.selectedNoteId = "";
-    this.miniSideBar = true;
     this.$activeForm = document.querySelector(".active-form");
     this.$inActiveForm = document.querySelector(".inactive-form");
     this.$noteTitle = document.querySelector("#note-title");
@@ -94,7 +93,7 @@ class App {
       //only creates notes when there is text in the text field
       const newNote = new Note(uniqueID(), title, text);
       this.notes = [...this.notes, newNote];
-      this.displayNotes();
+      this.render();
     }
   }
 
@@ -106,18 +105,26 @@ class App {
       }
       return note;
     });
-    this.displayNotes();
+    this.render();
   }
 
   deleteNote(id) {
     this.notes = this.notes.filter((note) => note.id !== id);
-    this.displayNotes();
+    this.render();
+  }
+
+  saveNotes() {
+    localStorage.setItem("notes", JSON.stringify(this.notes));
   }
 
   displayNotes() {
     this.$notes.innerHTML = this.notes.map((note) => createNoteHTML(note)).join("");
   }
 
+  render() {
+    this.saveNotes();
+    this.displayNotes();
+  }
   handleMouseOverNote(event) {
     const $checkNote = event.target.getElementsByClassName("check-circle");
     const $noteFooter = event.target.getElementsByClassName("create-note--footer");
