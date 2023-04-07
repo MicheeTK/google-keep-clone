@@ -192,7 +192,7 @@ class App {
       this.$sideBar.style.width = "content";
       this.$sideBar.classList.remove("side-bar-hover");
       this.$sideBarActiveItem.classList.remove("side-bar-active-item");
-      this.$sideBarItemsMaterialsAll.forEach((sideBarItemsMaterial) => (sideBarItemsMaterial.style.padding = "10px"));
+      this.$sideBarItemsMaterialsAll.forEach((sideBarItemsMaterial) => (sideBarItemsMaterial.style.padding = "12px"));
       this.$sideBarItemsAll.forEach((sideBarItem) => (sideBarItem.style.alignSelf = "flex-start"));
       this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "none"));
     }

@@ -158,9 +158,11 @@ input:focus {
   color: #5f6368;
   transition: 0.2s;
   height: 100%;
+  z-index: 1;
 }
 
 .side-bar-hover {
+  background-color: white;
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 1), 0 3px 5px rgba(0, 0, 0, 1);
 }
 
@@ -185,7 +187,8 @@ input:focus {
 
 .side-bar-active-item {
   background-color: #fef0c3;
-
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
   white-space: nowrap;
 }
 
@@ -333,7 +336,10 @@ input:focus {
   margin: 10px 0px 10px 20px;
   position: relative;
   cursor: cursor;
-  z-index: -1;
+}
+
+.create-note:first-child {
+  margin-left: 100px;
 }
 
 .create-note:hover {
