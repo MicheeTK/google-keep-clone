@@ -35,6 +35,7 @@ class App {
 
     this.addEventListeners();
     this.displayNotes();
+    this.handleToggleNoteFooter();
   }
 
   addEventListeners() {
@@ -57,12 +58,11 @@ class App {
     });
 
     this.$modalForm.addEventListener("submit", (event) => event.preventDefault());
-    this.$notes.addEventListener("mouseenter", (event) => this.handleMouseOverNote(event));
-    this.$notes.addEventListener("mouseout", (event) => this.handleMouseOutOfNote(event));
 
     this.$sideBarItemsMaterials.addEventListener("mouseover", (event) => {
       this.handleToggleSideBarMouseOver(event);
     });
+
     this.$sideBar.addEventListener("mouseleave", (event) => {
       this.handleToggleSideBarMouseOut(event);
     });
@@ -117,24 +117,19 @@ class App {
   }
 
   handleMouseOverNote(event) {
-    const $note = document.getElementById(`${event.target.id}`);
-    console.log("hey", event.target);
-    if ($note) {
-      const $checkNote = $note.getElementsByClassName("check-circle");
-      const $noteFooter = $note.getElementsByClassName("create-note--footer");
-      $checkNote[0].style.visibility = "visible";
-      $noteFooter[0].style.visibility = "visible";
-    }
+    const $checkNote = event.target.getElementsByClassName("check-circle");
+    const $noteFooter = event.target.getElementsByClassName("create-note--footer");
+    console.log("handleMouseOverNote", event.target);
+    $checkNote[0].style.visibility = "visible";
+    $noteFooter[0].style.visibility = "visible";
   }
 
   handleMouseOutOfNote(event) {
-    const $note = document.getElementById(`${event.target.id}`);
-    if ($note) {
-      const $checkNote = $note.getElementsByClassName("check-circle");
-      const $noteFooter = $note.getElementsByClassName("create-note--footer");
-      $checkNote[0].style.visibility = "hidden";
-      $noteFooter[0].style.visibility = "hidden";
-    }
+    const $checkNote = event.target.getElementsByClassName("check-circle");
+    const $noteFooter = event.target.getElementsByClassName("create-note--footer");
+
+    $checkNote[0].style.visibility = "hidden";
+    $noteFooter[0].style.visibility = "hidden";
   }
 
   openModal(event) {
@@ -194,6 +189,16 @@ class App {
       this.$sideBar.classList.remove("side-bar-hover");
       this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "none"));
     }
+  }
+
+  handleToggleNoteFooter() {
+    this.$notes.addEventListener("mouseenter", (event) => {
+      this.$createNoteAll = document.querySelectorAll(".create-note");
+      this.$createNoteAll.forEach((note) => {
+        note.addEventListener("mouseover", (event) => this.handleMouseOverNote(event));
+        note.addEventListener("mouseleave", (event) => this.handleMouseOutOfNote(event));
+      });
+    });
   }
 }
 
