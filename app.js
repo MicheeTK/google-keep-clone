@@ -30,7 +30,6 @@ class App {
     this.$mainAsideWrapper = document.querySelector(".main-aside-wrapper");
     this.$sideBarItemsText = document.querySelector(".side-bar-items--text");
     this.$sideBarItemsAllText = document.querySelectorAll(".side-bar-items--text");
-
     this.$sideBarItemsMaterials = document.querySelector(".material-symbols-outlined");
 
     this.addEventListeners();
@@ -119,7 +118,6 @@ class App {
   handleMouseOverNote(event) {
     const $checkNote = event.target.getElementsByClassName("check-circle");
     const $noteFooter = event.target.getElementsByClassName("create-note--footer");
-    console.log("handleMouseOverNote", event.target);
     $checkNote[0].style.visibility = "visible";
     $noteFooter[0].style.visibility = "visible";
   }
@@ -164,6 +162,7 @@ class App {
   handleArchive(event) {
     const $selectedClosestNote = event.target.closest(".create-note");
     const $archiveBtn = event.target.closest(".archive");
+    const $modalActiveArchiveIcon = event.target.closest("#modal-active-archive-icon");
     if ($selectedClosestNote && $archiveBtn) {
       this.selectedNoteId = $selectedClosestNote.id;
       this.deleteNote(this.selectedNoteId);
@@ -176,7 +175,6 @@ class App {
     if (event.target.closest(".material-symbols-outlined")) {
       this.$sideBar.style.width = "250px";
       this.$sideBar.classList.add("side-bar-hover");
-      console.log("over", event.target);
       this.$sideBarItemsAllText.forEach((textElement) => (textElement.style.display = "block"));
     } else {
       return;
